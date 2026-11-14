@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shift Coverage case study · Tanya Panich</title>
+<meta name="description" content="UX case study: letting event staff cancel, offer up or swap a shift from their phone, with the manager in control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="name" href="../">Tanya Panich</a>
+<nav><a href="https://www.linkedin.com/in/tanyapanich/">LinkedIn</a><a href="https://github.com/TanyaPanich">GitHub</a></nav>
+</div></header>
+
+<main class="wrap">
+<p class="eyebrow">UX case study</p>
+<h1>Shift Coverage: letting event staff cancel, offer up or swap a shift without leaving the manager out</h1>
+<p class="lead">A staff mobile app (Vue 3 + Capacitor, iOS and Android) and a web admin for a SaaS platform that event agencies use to staff field events. The team had no UI/UX designer. I designed and built Shift Coverage end to end, and wrote the feature overview for clients.</p>
+
+<div class="meta">
+<div><b>My role</b>UX flows and copy, frontend build, Vitest tests, client overview</div>
+<div><b>Users</b>Event staff on their phones; agency managers on the web</div>
+<div><b>Constraint</b>A manager approves every change; nothing moves on the schedule without them</div>
+</div>
+
+<h2>The problem</h2>
+<p>Staff who couldn't make a shift had no way to say so in the app. Some just didn't show up, and managers spent time phoning around for a replacement.</p>
+<p>The first ask was shift swap. While designing it, I saw that a worker who can't come often has no one to trade with. So I proposed two more paths: offer the shift up to qualified coworkers, or ask to cancel it.</p>
+
+<div class="cards">
+<div class="card"><h3>Cancel</h3><p>The worker picks a reason and asks to come off the shift. They stay scheduled until the manager approves.</p></div>
+<div class="card"><h3>Offer up</h3><p>Only coworkers in the same position, with no clashing shift, see it. One taps Apply, the manager approves, and the shift moves.</p></div>
+<div class="card"><h3>Swap</h3><p>Pick a coworker, then one of their shifts. They see what they'd give up and get. Both shifts trade at once, or not at all.</p></div>
+</div>
+
+<h2>Cancel a shift</h2>
+<p>Anna wakes up ill. She asks to come off Sunday's shift, but stays scheduled until her manager decides. An unanswered request never leaves the shift empty: it shows "Cancellation not answered" and she is still expected.</p>
+<div class="shots">
+<figure><a href="images/cancel-1-request-link.png"><img src="images/cancel-1-request-link.png" alt="Shift details with a quiet Request to cancel this shift link" loading="lazy"></a><figcaption>1. A quiet link under the shift details</figcaption></figure>
+<figure><a href="images/cancel-2-pick-a-reason.png"><img src="images/cancel-2-pick-a-reason.png" alt="Sheet to pick a reason and send the request" loading="lazy"></a><figcaption>2. Pick a reason and send</figcaption></figure>
+<figure><a href="images/cancel-3-awaiting-approval-and-reminder.png"><img src="images/cancel-3-awaiting-approval-and-reminder.png" alt="Cancellation awaiting manager approval, with a reminder" loading="lazy"></a><figcaption>3. Waiting, with a reminder close to the shift</figcaption></figure>
+<figure><a href="images/cancel-4-not-answered.png"><img src="images/cancel-4-not-answered.png" alt="Shift card labelled Cancellation not answered" loading="lazy"></a><figcaption>4. Not answered by the start: still expected</figcaption></figure>
+</div>
+
+<h2>Offer up a shift</h2>
+<p>Ben can't make Saturday but would rather a coworker took it. Only coworkers in the same position, for the same client and with no clashing shift see the offer. They never see his reason.</p>
+<div class="shots">
+<figure><a href="images/offer-1b-link-offer-swap-or-cancel.png"><img src="images/offer-1b-link-offer-swap-or-cancel.png" alt="Link: Can't make this shift? Offer up, swap or cancel this shift." loading="lazy"></a><figcaption>1. The link matches what the client switched on</figcaption></figure>
+<figure><a href="images/offer-2b-choose-offer-up-swap-or-cancel.png"><img src="images/offer-2b-choose-offer-up-swap-or-cancel.png" alt="Sheet with Offer Up selected and a reason" loading="lazy"></a><figcaption>2. Choose Offer Up and a reason</figcaption></figure>
+<figure><a href="images/offer-3-awaiting-a-coworker.png"><img src="images/offer-3-awaiting-a-coworker.png" alt="Offered up, awaiting a coworker" loading="lazy"></a><figcaption>3. Ben is still scheduled while it waits</figcaption></figure>
+<figure><a href="images/offer-4-coworker-applies.png"><img src="images/offer-4-coworker-applies.png" alt="Coworker view with Apply and Decline" loading="lazy"></a><figcaption>4. A coworker applies; it waits for the manager</figcaption></figure>
+</div>
+
+<h2>Swap a shift</h2>
+<p>Ben would take Anna's shift if she takes his. The sheet only lists coworkers with a shift he could trade for. Both stay scheduled until Anna accepts and the manager approves; then both shifts trade in one step, or nothing changes.</p>
+<div class="shots">
+<figure><a href="images/swap-3-pick-coworker-and-shift.png"><img src="images/swap-3-pick-coworker-and-shift.png" alt="Swap Shift: step 1 pick a coworker, step 2 pick one of their shifts" loading="lazy"></a><figcaption>1. Pick a coworker, then one of their shifts</figcaption></figure>
+<figure><a href="images/swap-4-swap-requested.png"><img src="images/swap-4-swap-requested.png" alt="Swap requested, awaiting a coworker" loading="lazy"></a><figcaption>2. Ben's shift while the swap waits</figcaption></figure>
+<figure><a href="images/swap-1-swap-request-card.png"><img src="images/swap-1-swap-request-card.png" alt="Swap request card showing what you would give up and receive" loading="lazy"></a><figcaption>3. Anna sees what she'd give up and get</figcaption></figure>
+<figure><a href="images/swap-2-decline-asks-first.png"><img src="images/swap-2-decline-asks-first.png" alt="Decline this swap confirmation dialog" loading="lazy"></a><figcaption>4. Declining always asks first</figcaption></figure>
+<figure><a href="images/swap-5-declined-ask-again.png"><img src="images/swap-5-declined-ask-again.png" alt="Declined swap with Ask again and Propose this swap" loading="lazy"></a><figcaption>5. Declined: "Ask again" or "Propose this swap"</figcaption></figure>
+</div>
+
+<h2>One place for everything waiting on you</h2>
+<p>Home has two tabs: "My shifts" and "Requests". A red count shows what's waiting. Every card opens the full shift details with the staffer's own pay, so they can decide before saying yes. A passed-on offer can be re-applied for with one tap.</p>
+<div class="shots">
+<figure><a href="images/requests-1-tab-with-red-count.png"><img src="images/requests-1-tab-with-red-count.png" alt="Home with My shifts and Requests tabs and a red count" loading="lazy"></a><figcaption>1. A red count on Requests</figcaption></figure>
+<figure><a href="images/requests-2-filters.png"><img src="images/requests-2-filters.png" alt="Filter sheet: All, Pending, Declined, Swap requests, Offered by co-workers" loading="lazy"></a><figcaption>2. Filters</figcaption></figure>
+<figure><a href="images/requests-3-declined-and-reapply.png"><img src="images/requests-3-declined-and-reapply.png" alt="Declined requests with Re-apply buttons" loading="lazy"></a><figcaption>3. Declined, with Re-apply</figcaption></figure>
+<figure><a href="images/details-1-card-with-arrow.png"><img src="images/details-1-card-with-arrow.png" alt="Request cards with an arrow to details" loading="lazy"></a><figcaption>4. Each card opens its details</figcaption></figure>
+<figure><a href="images/details-2-shift-details.png"><img src="images/details-2-shift-details.png" alt="Shift details with Apply and Decline" loading="lazy"></a><figcaption>5. When, where, position and pay</figcaption></figure>
+</div>
+
+<h2>The manager's side</h2>
+<p>One list for every cancel, offer-up and swap request. Managers only see the programs, markets and customers they look after. Warnings surface what's stuck, "Approve selected" says why any were skipped, and every change lands in the shift's history in plain sentences.</p>
+<div class="shots wide">
+<figure><a href="images/manager-1-coverage-requests-list.png"><img src="images/manager-1-coverage-requests-list.png" alt="Coverage Requests list with a warning about a request waiting over 14 days" loading="lazy"></a><figcaption>The list, with a warning for a request waiting over 14 days</figcaption></figure>
+</div>
+<div class="shots two">
+<figure><a href="images/manager-2-approve-or-decline.png"><img src="images/manager-2-approve-or-decline.png" alt="One coverage request with Approve and Decline" loading="lazy"></a><figcaption>One request: Approve or Decline</figcaption></figure>
+<figure><a href="images/manager-3-shift-history.png"><img src="images/manager-3-shift-history.png" alt="Position history table in plain sentences" loading="lazy"></a><figcaption>The shift's history, in plain sentences</figcaption></figure>
+</div>
+
+<h2>The cost change, before Approve</h2>
+<p>People can earn different rates for the same shift, so approving a swap or an offer-up can change what the shift costs. Managers see who works it now and after, the hourly and total difference, and a plain-language total. Any change is highlighted; a missing rate says "unknown" instead of guessing. Staff never see anyone else's pay.</p>
+<div class="shots two">
+<figure><a href="images/pay-change-offer.png"><img src="images/pay-change-offer.png" alt="Offer-up request where approving costs 25 dollars more" loading="lazy"></a><figcaption>Offer up: this shift will cost $25.00 more</figcaption></figure>
+<figure><a href="images/pay-change-swap.png"><img src="images/pay-change-swap.png" alt="Swap request with both shifts and the total difference" loading="lazy"></a><figcaption>Swap: both shifts, and the total for the two</figcaption></figure>
+</div>
+<div class="shots two">
+<figure><a href="images/pay-change-unknown.png"><img src="images/pay-change-unknown.png" alt="A missing pay rate shown as unknown" loading="lazy"></a><figcaption>Edge cases: a missing rate, and no change at all</figcaption></figure>
+</div>
+
+<h2>Alerts and push notifications</h2>
+<p>Coverage messages go through the alerts system clients already use. Each client chooses email, text or push notification for six moments, from "a shift was offered up" to "your request wasn't answered", and writes its own wording. Alerts respect each staffer's email and SMS choices and never include the reason. Push notifications open the right screen in the app; I was finishing them when the team was let go.</p>
+
+<h2>Privacy and safety</h2>
+<ul>
+<li>A manager approves every change. There is no way to switch that off.</li>
+<li>Only qualified, active staff take part, and nobody gets double-booked.</li>
+<li>Each client sets a time limit, so a cancellation can't land two hours before doors open.</li>
+<li>Coworkers never see the reason, the manager's note or anyone else's pay. A refused swap only says "That shift is no longer available."</li>
+<li>On a shared phone, signing out wipes saved coworkers and their shifts.</li>
+<li>"Sent" means sent: the app confirms only after the server saved the request. On a bad connection it says "We couldn't send your request. Please try again."</li>
+</ul>
+
+<h2>Design decisions</h2>
+<div class="decisions">
+<p><b>A quiet link, not a big button.</b> Working the shift is the main action. The link sits under the details, and its text matches what the client switched on.</p>
+<p><b>One sheet, one step.</b> What to do and why on one screen. Swap adds two short steps in the same sheet.</p>
+<p><b>"You're still scheduled" on every screen.</b> A request is never mistaken for a yes.</p>
+<p><b>Easy to change your mind.</b> Re-apply for a passed-on offer, ask again after a declined swap, and confirm before anything final.</p>
+<p><b>Details before commitment.</b> Every request opens the shift's place, time and the staffer's own pay.</p>
+<p><b>Managers see what needs them first.</b> Warnings for stale and urgent requests, bulk approve with reasons, history in plain words.</p>
+</div>
+
+<h2>How I worked</h2>
+<ul>
+<li>Wrote prototype specs and turned them into mockups with AI, covering readable fonts, contrast and web, iOS and Android variants</li>
+<li>Agreed on the flows with the team before coding, then built them in Vue 3 with Vitest tests</li>
+<li>Wrote the client overview in plain words, with screenshots of every step</li>
+</ul>
+
+<p class="note">Screenshots come from the test system, with test people and made-up clients. Shared with the company's permission.</p>
+</main>
+
+<footer><div class="wrap">Tanya Panich · <a href="https://www.linkedin.com/in/tanyapanich/">LinkedIn</a> · <a href="https://github.com/TanyaPanich">GitHub</a></div></footer>
+</body>
+</html>
