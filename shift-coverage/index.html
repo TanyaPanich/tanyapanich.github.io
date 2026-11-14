@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shift Coverage case study · Tanya Panich</title>
-<meta name="description" content="UX case study: letting event staff cancel, offer up or swap a shift from their phone, with the manager in control.">
+<meta name="description" content="Case study: letting event staff cancel, offer up or swap a shift from their phone, with the manager in control. Designed and built end to end.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="../style.css">
@@ -16,12 +16,13 @@
 </div></header>
 
 <main class="wrap">
-<p class="eyebrow">UX case study</p>
+<p class="eyebrow">Case study</p>
 <h1>Shift Coverage: letting event staff cancel, offer up or swap a shift without leaving the manager out</h1>
-<p class="lead">A staff mobile app for iOS and Android, built with Vue 3, TypeScript, Pinia and Capacitor, and a web admin for a SaaS platform that event agencies use to staff field events. The team had no UI/UX designer. I designed and built Shift Coverage end to end, and wrote the feature overview for clients.</p>
+<p class="lead">A feature of the staff mobile app (iOS and Android) and the web admin of a SaaS platform that event agencies use to staff field events. The team had no UI/UX designer. I designed and built Shift Coverage end to end: the flows, the frontend, the backend and database, and the tests. I also wrote the feature overview for clients.</p>
 
 <div class="meta">
-<div><b>My role</b>UX flows and copy, frontend build, Vitest tests, client overview</div>
+<div><b>My role</b>UX flows and copy, frontend, backend and database, tests, client overview</div>
+<div><b>Stack</b>Vue 3, TypeScript, Pinia, Capacitor · PHP, PostgreSQL · Vitest, Playwright</div>
 <div><b>Users</b>Event staff on their phones; agency managers on the web</div>
 <div><b>Constraint</b>A manager approves every change; nothing moves on the schedule without them</div>
 </div>
@@ -120,7 +121,10 @@
 <h2>How I worked</h2>
 <ul>
 <li>Wrote prototype specs and turned them into mockups with AI, covering readable fonts, contrast and web, iOS and Android variants</li>
-<li>Agreed on the flows with the team before coding, then built them in Vue 3 and TypeScript with Vitest tests</li>
+<li>Agreed on the flows with the team before coding, then built the screens in Vue 3 and TypeScript</li>
+<li>Built the backend in PHP with PostgreSQL: who can see and take a shift, time limits per client, all-or-nothing swaps, and the history log</li>
+<li>Wrote Vitest unit tests and Playwright end-to-end tests for every feature</li>
+<li>Worked with an AI-assisted workflow in Claude Code, reviewing every change before it shipped</li>
 <li>Wrote the client overview in plain words, with screenshots of every step</li>
 </ul>
 
